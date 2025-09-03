@@ -17,6 +17,5 @@ public class FeedbackDto {
     private String comment;
     private LocalDateTime addDate;
     private String username;
-
-
+    private Long userId;
 }

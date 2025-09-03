@@ -27,7 +27,7 @@ const EditProfilePage = () => {
 
         // Set state
         setEmail(userRes.data.email);
-        setPassword(""); 
+        setPassword(userRes.data.password); 
         setFirstName(detailsRes.data.firstname);
         setLastName(detailsRes.data.lastname);
         setUser(userRes.data);

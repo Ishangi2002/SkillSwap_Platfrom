@@ -2,6 +2,7 @@ package com.webproject.vswapp_backend.mapper;
 
 import com.webproject.vswapp_backend.dto.FeedbackDto;
 import com.webproject.vswapp_backend.entity.Feedback;
+import com.webproject.vswapp_backend.entity.User;
 
 public class FeedbackMapper {
 
@@ -22,20 +23,23 @@ public class FeedbackMapper {
             }
         }
 
+        assert feedback.getUser() != null;
         return new FeedbackDto(
                 feedback.getId(),
                 feedback.getComment(),
                 feedback.getAddDate(),
-                username
+                username,
+                feedback.getUser().getId()
         );
     }
 
     // DTO → Entity
-    public static Feedback mapToFeedback(FeedbackDto dto) {
+    public static Feedback mapToFeedback(FeedbackDto dto, User user) {
         Feedback feedback = new Feedback();
         feedback.setId(dto.getId());
         feedback.setComment(dto.getComment());
         feedback.setAddDate(dto.getAddDate());
+        feedback.setUser(user);
         return feedback;
     }
 }

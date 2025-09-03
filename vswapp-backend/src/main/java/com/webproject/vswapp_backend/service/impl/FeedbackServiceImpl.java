@@ -2,8 +2,10 @@ package com.webproject.vswapp_backend.service.impl;
 
 import com.webproject.vswapp_backend.dto.FeedbackDto;
 import com.webproject.vswapp_backend.entity.Feedback;
+import com.webproject.vswapp_backend.entity.User;
 import com.webproject.vswapp_backend.exception.ResourceNotFoundException;
 import com.webproject.vswapp_backend.mapper.FeedbackMapper;
+import com.webproject.vswapp_backend.repository.UserRepository;
 import com.webproject.vswapp_backend.service.FeedbackService;
 import com.webproject.vswapp_backend.repository.FeedbackRepository;
 import lombok.AllArgsConstructor;
@@ -19,11 +21,17 @@ import java.util.stream.Collectors;
 public class FeedbackServiceImpl implements FeedbackService {
 
     private FeedbackRepository feedbackRepository;
+    private UserRepository userRepository;
 
     @Override
     public FeedbackDto createFeedback(FeedbackDto feedbackDto) {
+
+        User user = userRepository.findById(feedbackDto.getUserId())
+                .orElseThrow(() -> new RuntimeException("User not found"));
+
+
         // Map DTO → Entity
-        Feedback feedback = FeedbackMapper.mapToFeedback(feedbackDto);
+        Feedback feedback = FeedbackMapper.mapToFeedback(feedbackDto,user);
 
         // Ensure addDate is set to now if null
         if (feedback.getAddDate() == null) {

@@ -117,7 +117,7 @@ export const ProfilePage = () => {
     await axios.post("http://localhost:8080/api/feedback", 
       {
         comment: feedbackText,
-        name:`${user.firstname} ${user.lastname}`
+        userId:userId
       },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -269,7 +269,8 @@ export const ProfilePage = () => {
 
           <div className="flex justify-center mt-4">
             <Link to="/">
-              <button onClick={handleAddFeedback} className="w-96 bg-blue-800 hover:bg-indigo-800 text-white rounded-lg p-3 text-lg ">
+              <button onClick={handleAddFeedback} 
+              className="w-96 bg-blue-800 hover:bg-indigo-800 text-white rounded-lg p-3 text-lg ">
                 Add your feedback
               </button>
             </Link>
