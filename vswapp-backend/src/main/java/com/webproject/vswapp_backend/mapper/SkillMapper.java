@@ -8,12 +8,15 @@ public class SkillMapper {
 
     public static Skill mapToSkill(SkillDto skillDto) {
         Skill skill = new Skill();
+
+        // Copy data from skillDto → skill
         skill.setId(skillDto.getId());
         skill.setTitle(skillDto.getTitle());
         skill.setLevel(skillDto.getLevel());
         skill.setAbout(skillDto.getAbout());
         skill.setImagePath(skillDto.getImagePath());
 
+        // Handle category (if it exists in skillDto)
         if (skillDto.getCategory() != null) {
             Category category = new Category();
             category.setCategoryName(skillDto.getCategory());

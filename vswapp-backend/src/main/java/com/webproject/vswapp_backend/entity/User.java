@@ -7,6 +7,8 @@ import java.util.Set;
 import java.util.HashSet;
 import java.util.List;
 import java.util.ArrayList;
+import org.hibernate.annotations.CreationTimestamp;
+
 
 @Entity
 @Table(name = "user")
@@ -27,8 +29,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column(name = "created_at")
+    @CreationTimestamp
+    @Column(name = "created_at", updatable = false, nullable = false)
     private LocalDateTime createdAt;
+
 
     // One-to-Many with Skill
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)

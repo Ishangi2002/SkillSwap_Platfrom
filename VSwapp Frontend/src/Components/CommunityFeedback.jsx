@@ -30,9 +30,9 @@ export const CommunityFeedback = () => {
           feedbacks.map((feedback, i) => (
             <div
               key={i}
-              className="bg-gray-800 w-96 h-56 p-6 rounded-3xl hover:shadow-lg transition flex flex-col justify-center mt-20"
+              className="bg-gray-800 w-96 h-48 p-6 rounded-3xl hover:shadow-lg transition flex flex-col justify-center mt-20"
             >
-              <h3 className="text-base font-semibold mb-2 text-white mt-[-60px] flex items-center justify-start">
+              <h3 className="text-base font-semibold mb-6 text-white mt-[-60px] flex items-center justify-start">
                 {feedback.comment}
               </h3>
               <p className="text-gray-400 text-sm text-right">{feedback.username}</p>

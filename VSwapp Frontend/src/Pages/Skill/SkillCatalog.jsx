@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FilterBox from './FilterBox';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 export const SkillCatalog = () => {
   const [skills, setSkills] = useState([]);
@@ -69,7 +70,7 @@ export const SkillCatalog = () => {
                 />
                 <div className="flex justify-between items-center px-4 py-2 ">
                   <span className="text-base">{skill.title}</span>
-                  <span className="text-base cursor-pointer">Join</span>
+                  <Link to="/contact"><span className="text-base cursor-pointer">Join</span></Link>
                 </div>
               </div>
             ))}
